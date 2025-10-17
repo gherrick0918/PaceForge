@@ -1,0 +1,270 @@
+PS C:\dev\PaceForge> git init -b main
+Initialized empty Git repository in C:/dev/PaceForge/.git/
+PS C:\dev\PaceForge> git add .
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/demo.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/generator.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tsconfig.json', LF will be replaced by CRLF the next time Git touches it
+PS C:\dev\PaceForge> git commit -m "First Commit" 
+[main (root-commit) adf0dca] First Commit
+ 5 files changed, 282 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 package.json
+ create mode 100644 src/demo.ts
+ create mode 100644 src/generator.ts
+ create mode 100644 tsconfig.json
+PS C:\dev\PaceForge> npm i
+
+added 32 packages, and audited 33 packages in 4s
+
+2 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm notice
+npm notice New patch version of npm available! 11.6.1 -> 11.6.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+npm notice To update run: npm install -g npm@11.6.2
+npm notice
+PS C:\dev\PaceForge> npm run start
+
+> walkpad-mvp@0.1.0 start
+> tsx src/demo.ts
+
+Workout: Intervals
+Total: 28 min
+
+00:00–05:00  @ 1.5   Warm-up @ 1.5 mph
+05:00–06:30  @ 2.5   Hard 1/6 @ 2.5 mph
+06:30–08:00  @ 1.5   Easy 1/6 @ 1.5 mph
+08:00–09:30  @ 2.5   Hard 2/6 @ 2.5 mph
+09:30–11:00  @ 1.5   Easy 2/6 @ 1.5 mph
+11:00–12:30  @ 2.5   Hard 3/6 @ 2.5 mph
+12:30–14:00  @ 1.5   Easy 3/6 @ 1.5 mph
+14:00–15:30  @ 2.5   Hard 4/6 @ 2.5 mph
+15:30–17:00  @ 1.5   Easy 4/6 @ 1.5 mph
+17:00–18:30  @ 2.5   Hard 5/6 @ 2.5 mph
+18:30–20:00  @ 1.5   Easy 5/6 @ 1.5 mph
+20:00–21:30  @ 2.5   Hard 6/6 @ 2.5 mph
+21:30–23:00  @ 1.5   Easy 6/6 @ 1.5 mph
+23:00–28:00  @ 1.5   Cool-down @ 1.5 mph
+
+--- JSON ---
+{
+  "name": "Intervals",
+  "totalSecs": 1680,
+  "segments": [
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Warm-up @ 1.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 2.5,
+      "cue": "Hard 1/6 @ 2.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 1.5,
+      "cue": "Easy 1/6 @ 1.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 2.5,
+      "cue": "Hard 2/6 @ 2.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 1.5,
+      "cue": "Easy 2/6 @ 1.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 2.5,
+      "cue": "Hard 3/6 @ 2.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 1.5,
+      "cue": "Easy 3/6 @ 1.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 2.5,
+      "cue": "Hard 4/6 @ 2.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 1.5,
+      "cue": "Easy 4/6 @ 1.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 2.5,
+      "cue": "Hard 5/6 @ 2.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 1.5,
+      "cue": "Easy 5/6 @ 1.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 2.5,
+      "cue": "Hard 6/6 @ 2.5 mph"
+    },
+    {
+      "secs": 90,
+      "speed": 1.5,
+      "cue": "Easy 6/6 @ 1.5 mph"
+    },
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Cool-down @ 1.5 mph"
+    }
+  ]
+}
+PS C:\dev\PaceForge> npm run gen:steady
+
+> walkpad-mvp@0.1.0 gen:steady
+> tsx src/demo.ts steady
+
+Workout: Steady
+Total: 30 min
+
+00:00–05:00  @ 1.5   Warm-up @ 1.5 mph
+05:00–21:00  @ 2   Cruise @ 2 mph
+21:00–21:20  @ 2.5   Stride 1/4 @ 2.5 mph
+21:20–22:00  @ 2   Easy between strides @ 2 mph
+22:00–22:20  @ 2.5   Stride 2/4 @ 2.5 mph
+22:20–23:00  @ 2   Easy between strides @ 2 mph
+23:00–23:20  @ 2.5   Stride 3/4 @ 2.5 mph
+23:20–24:00  @ 2   Easy between strides @ 2 mph
+24:00–24:20  @ 2.5   Stride 4/4 @ 2.5 mph
+24:20–25:00  @ 2   Easy between strides @ 2 mph
+25:00–30:00  @ 1.5   Cool-down @ 1.5 mph
+
+--- JSON ---
+{
+  "name": "Steady",
+  "totalSecs": 1800,
+  "segments": [
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Warm-up @ 1.5 mph"
+    },
+    {
+      "secs": 960,
+      "speed": 2,
+      "cue": "Cruise @ 2 mph"
+    },
+    {
+      "secs": 20,
+      "speed": 2.5,
+      "cue": "Stride 1/4 @ 2.5 mph"
+    },
+    {
+      "secs": 40,
+      "speed": 2,
+      "cue": "Easy between strides @ 2 mph"
+    },
+    {
+      "secs": 20,
+      "speed": 2.5,
+      "cue": "Stride 2/4 @ 2.5 mph"
+    },
+    {
+      "secs": 40,
+      "speed": 2,
+      "cue": "Easy between strides @ 2 mph"
+    },
+    {
+      "secs": 20,
+      "speed": 2.5,
+      "cue": "Stride 3/4 @ 2.5 mph"
+    },
+    {
+      "secs": 40,
+      "speed": 2,
+      "cue": "Easy between strides @ 2 mph"
+    },
+    {
+      "secs": 20,
+      "speed": 2.5,
+      "cue": "Stride 4/4 @ 2.5 mph"
+    },
+    {
+      "secs": 40,
+      "speed": 2,
+      "cue": "Easy between strides @ 2 mph"
+    },
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Cool-down @ 1.5 mph"
+    }
+  ]
+}
+PS C:\dev\PaceForge> npm run gen:progression
+
+> walkpad-mvp@0.1.0 gen:progression
+> tsx src/demo.ts progression
+
+Workout: Progression
+Total: 30 min
+
+00:00–05:00  @ 1.5   Warm-up @ 1.5 mph
+05:00–09:00  @ 1.5   Step 1/5 @ 1.5 mph
+09:00–13:00  @ 2   Step 2/5 @ 2 mph
+13:00–17:00  @ 2   Step 3/5 @ 2 mph
+17:00–21:00  @ 2.5   Step 4/5 @ 2.5 mph
+21:00–25:00  @ 2.5   Step 5/5 @ 2.5 mph
+25:00–30:00  @ 1.5   Cool-down @ 1.5 mph
+
+--- JSON ---
+{
+  "name": "Progression",
+  "totalSecs": 1800,
+  "segments": [
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Warm-up @ 1.5 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 1.5,
+      "cue": "Step 1/5 @ 1.5 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2,
+      "cue": "Step 2/5 @ 2 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2,
+      "cue": "Step 3/5 @ 2 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2.5,
+      "cue": "Step 4/5 @ 2.5 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2.5,
+      "cue": "Step 5/5 @ 2.5 mph"
+    },
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Cool-down @ 1.5 mph"
+    }
+  ]
+}
+PS C:\dev\PaceForge> 
