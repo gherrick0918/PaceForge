@@ -1,0 +1,90 @@
+PS C:\dev\PaceForge> pnpm -F mobile add -E expo@~51.0.0; `
+>> pnpm add -w -D typescript; `
+>> pnpm -F mobile dlx expo install expo-keep-awake expo-speech expo-haptics @react-native-async-storage/async-storage react-native-svg; `
+>> pnpm install; `
+>> pnpm -F @paceforge/generator build; `
+>> pnpm -F mobile start
+Progress: resolved 1, reused 0, downloaded 0, added 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+apps/mobile                              |  WARN  deprecated @types/react-native@0.73.0
+
+ ERR_PNPM_NO_MATCHING_VERSION  No matching version found for expo-keep-awake@~13.0.3
+
+This error happened while installing a direct dependency of C:\dev\PaceForge\apps\mobile
+
+The latest release of expo-keep-awake is "15.0.7".
+
+Other releases are:
+  * sdk-50: 12.8.2
+  * sdk-51: 13.0.2
+  * canary: 15.0.8-canary-20251015-a6a1272
+
+If you need the full list of all 151 published versions run "$ pnpm view expo-keep-awake versions".
+Progress: resolved 13, reused 7, downloaded 1, added 0
+apps/mobile                              |  WARN  deprecated @types/react-native@0.73.0
+
+ ERR_PNPM_NO_MATCHING_VERSION  No matching version found for expo-speech@~13.0.2
+
+This error happened while installing a direct dependency of C:\dev\PaceForge\apps\mobile
+
+The latest release of expo-speech is "14.0.7".
+
+Other releases are:
+  * sdk-50: 11.7.0
+  * sdk-51: 12.0.2
+  * canary: 14.0.8-canary-20251015-a6a1272
+
+If you need the full list of all 150 published versions run "$ pnpm view expo-speech versions".
+Progress: resolved 13, reused 8, downloaded 1, added 0
+ ERROR  Unknown option: 'recursive'
+For help, run: pnpm help dlx
+Scope: all 3 workspace projects
+apps/mobile                              |  WARN  deprecated @types/react-native@0.73.0
+
+ ERR_PNPM_NO_MATCHING_VERSION  No matching version found for expo-keep-awake@~13.0.3
+
+This error happened while installing a direct dependency of C:\dev\PaceForge\apps\mobile
+
+The latest release of expo-keep-awake is "15.0.7".
+
+Other releases are:
+  * sdk-50: 12.8.2
+  * sdk-51: 13.0.2
+  * canary: 15.0.8-canary-20251015-a6a1272
+
+If you need the full list of all 151 published versions run "$ pnpm view expo-keep-awake versions".
+Progress: resolved 13, reused 9, downloaded 0, added 0
+
+> @paceforge/generator@0.1.0 build C:\dev\PaceForge\packages\generator
+> tsc -p tsconfig.build.json
+
+'tsc' is not recognized as an internal or external command,
+operable program or batch file.
+C:\dev\PaceForge\packages\generator:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @paceforge/generator@0.1.0 build: `tsc -p tsconfig.build.json`
+Exit status 1
+ WARN   Local package.json exists, but node_modules missing, did you mean to install?
+
+> mobile@0.1.0 start C:\dev\PaceForge\apps\mobile
+> expo start
+
+'expo' is not recognized as an internal or external command,
+operable program or batch file.
+C:\dev\PaceForge\apps\mobile:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  mobile@0.1.0 start: `expo start`
+Exit status 1
+ WARN   Local package.json exists, but node_modules missing, did you mean to install?
+PS C:\dev\PaceForge> 

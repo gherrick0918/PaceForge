@@ -1,0 +1,186 @@
+PS C:\dev\PaceForge> pnpm -C apps/mobile add -E expo@~51.0.0; `
+>> pnpm -C apps/mobile add -E expo-keep-awake@13.0.2 expo-speech@12.0.2 expo-haptics@13.0.0 @react-native-async-storage/async-storage@1.23.1 react-na
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                    ative-svg@15.3.0; `
+>> pnpm -C apps/mobile add -D typescript@~5.9.2 @types/react@~19.1.10; `
+>> pnpm -C apps/mobile remove @types/react-native; `
+>> pnpm install; `
+>> pnpm -F @paceforge/generator build; `
+>> pnpm -C apps/mobile dlx expo start
+ WARN  deprecated @types/react-native@0.73.0: This is a stub types definition. react-native provides its own type definitions, so you do not need this installed.
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    | Progress: resolved 1054, reused 979, downloaded 0, added 0, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ expo 51.0.39
++ expo-status-bar 2.0.1
++ react 18.3.1
++ react-native 0.74.3
+
+devDependencies:
++ @types/react 18.3.5 already in devDependencies, was not moved to dependencies.
++ @types/react-native 0.73.0 deprecated already in devDependencies, was not moved to dependencies.
++ typescript 5.9.3 already in devDependencies, was not moved to dependencies.
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ @types/react-native 0.73.0
+  └─┬ react-native 0.74.3
+    └── ✕ unmet peer react@18.2.0: found 18.3.1
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 3s
+ WARN  deprecated @types/react-native@0.73.0: This is a stub types definition. react-native provides its own type definitions, so you do not need this installed.
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |  +17 ++
+../..                                    | Progress: resolved 1071, reused 980, downloaded 16, added 17, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1 (2.2.0 is available)
++ expo 51.0.39
++ expo-haptics 13.0.0 (15.0.7 is available)
++ expo-keep-awake 13.0.2 (15.0.7 is available)
++ expo-speech 12.0.2 (14.0.7 is available)
++ expo-status-bar 2.0.1
++ react 18.3.1
++ react-native 0.74.3
++ react-native-svg 15.3.0 (15.14.0 is available)
+
+devDependencies:
++ @types/react 18.3.5 already in devDependencies, was not moved to dependencies.
++ @types/react-native 0.73.0 deprecated already in devDependencies, was not moved to dependencies.
++ typescript 5.9.3 already in devDependencies, was not moved to dependencies.
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ @types/react-native 0.73.0
+  └─┬ react-native 0.74.3
+    └── ✕ unmet peer react@18.2.0: found 18.3.1
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 5.1s
+ WARN  deprecated @types/react-native@0.73.0: This is a stub types definition. react-native provides its own type definitions, so you do not need this installed.
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |  +16  -17 ++--
+../..                                    | Progress: resolved 1070, reused 994, downloaded 1, added 16, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ react 18.3.1
+
+devDependencies:
+- @types/react 18.3.5
++ @types/react 19.1.17 (19.2.2 is available)
++ typescript 5.9.3
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ @types/react-native 0.73.0
+  └─┬ react-native 0.74.3
+    ├── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+    ├── ✕ unmet peer react@18.2.0: found 18.3.1
+    └─┬ @react-native/virtualized-lists 0.74.85
+      └── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 7s
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |   -1 -
+../..                                    | Progress: resolved 958, reused 950, downloaded 0, added 0, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1
++ expo 51.0.39
++ expo-haptics 13.0.0
++ expo-keep-awake 13.0.2
++ expo-speech 12.0.2
++ expo-status-bar 2.0.1
++ react 18.3.1
++ react-native 0.74.3
++ react-native-svg 15.3.0
+
+devDependencies:
++ @types/react 19.1.17
+- @types/react-native 0.73.0
++ typescript 5.9.3
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ react-native 0.74.3
+  ├── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+  ├── ✕ unmet peer react@18.2.0: found 18.3.1
+  └─┬ @react-native/virtualized-lists 0.74.85
+    └── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+
+Done in 3.7s
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+Done in 1.5s
+
+> @paceforge/generator@0.1.0 build C:\dev\PaceForge\packages\generator
+> tsc -p tsconfig.build.json
+
+Starting project at C:\dev\PaceForge
+Starting Metro Bundler
+√ It looks like you're trying to use TypeScript but don't have the required dependencies installed. Would you like to install typescript@~5.9.2,     
+@types/react@~19.1.10? ... yes
+
+› Installing 2 other packages using pnpm
+› Using ~5.9.2 instead of ~5.9.2 for typescript and ~19.1.10 instead of ~19.1.10 for @types/react because these versions was explicitly provided. Packages excluded from dependency validation should be listed in expo.install.exclude in package.json. Learn more: https://docs.expo.dev/more/expo-cli/#configuring-dependency-validation
+> pnpm add --save-dev typescript@~5.9.2 @types/react@~19.1.10
+/ Installing typescript@~5.9.2, @types/react@~19.1.10 ERR_PNPM_ADDING_TO_ROOT  Running this command will add the dependency to the workspace root, which might not be what you want - if you really meant it, make it explicit by running this command again with the -w flag (or --workspace-root). If you don't want to see this warning anymore, you may set the ignore-workspace-root-check setting to true.
+× Failed to install typescript@~5.9.2, @types/react@~19.1.10 with error: pnpm add --save-dev typescript@~5.9.2 @types/react@~19.1.10 exited with non-zero code: 1
+Error: pnpm add --save-dev typescript@~5.9.2 @types/react@~19.1.10 exited with non-zero code: 1
+Error: pnpm add --save-dev typescript@~5.9.2 @types/react@~19.1.10 exited with non-zero code: 1
+    at ChildProcess.completionListener (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+spawn-async@1.7.2\node_modules\@expo\spawn-async\src\spawnAsync.ts:67:13)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess.cp.emit (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\cross-spawn@7.0.6\node_modules\cross-spawn\lib\enoent.js:34:29)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    ...
+    at spawnAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+spawn-async@1.7.2\node_modules\@expo\spawn-async\src\spawnAsync.ts:28:21)
+    at PnpmPackageManager.runAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+package-manager@1.9.8\node_modules\@expo\package-manager\src\node\BasePackageManager.ts:72:22)
+    at PnpmPackageManager.addDevAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+package-manager@1.9.8\node_modules\@expo\package-manager\src\node\PnpmPackageManager.ts:45:17)
+    at installPackagesAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\src\install\installAsync.ts:199:26)     
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at installPackagesAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\src\start\doctor\dependencies\ensureDependenciesAsync.ts:149:5)
+    at ensureDependenciesAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\src\start\doctor\dependencies\ensureDependenciesAsync.ts:91:9)
+    at TypeScriptProjectPrerequisite._ensureDependenciesInstalledAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\src\start\doctor\typescript\TypeScriptProjectPrerequisite.ts:106:14)
+    at TypeScriptProjectPrerequisite.assertImplementation (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\src\start\doctor\typescript\TypeScriptProjectPrerequisite.ts:43:5)
+    at TypeScriptProjectPrerequisite.assertAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\src\start\doctor\Prerequisite.ts:33:14)
+PS C:\dev\PaceForge> 

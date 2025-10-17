@@ -1,0 +1,59 @@
+PS C:\dev\PaceForge> pnpm -C apps/mobile add -D @expo/cli@54.0.11; `
+>> pnpm install; `
+>> pnpm -F @paceforge/generator build; `
+>> pushd apps\mobile; pnpm expo start -c --tunnel; popd
+ WARN  14 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, glob@7.2.3, inflight@1.0.6, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |   +4   -7 +-
+../..                                    | Progress: resolved 902, reused 824, downloaded 0, added 4, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1
++ expo 54.0.13
++ expo-haptics 13.0.0
++ expo-keep-awake 13.0.2
++ expo-speech 12.0.2
++ expo-status-bar 1.12.1
++ react 18.2.0
++ react-native 0.74.5
++ react-native-svg 15.2.0
+
+devDependencies:
++ @expo/cli 54.0.11
++ @types/react 18.2.79
++ typescript 5.3.3
+
+Done in 3.7s
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+Done in 1.4s
+
+> @paceforge/generator@0.1.0 build C:\dev\PaceForge\packages\generator
+> tsc -p tsconfig.build.json
+
+Starting project at C:\dev\PaceForge\apps\mobile
+Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+Error: could not connect to TCP port 5562: cannot connect to 127.0.0.1:5562: No connection could be made because the target machine actively refused it. (10061)
+Error: C:\Users\gherr\AppData\Local\Android\Sdk/platform-tools/adb -s emulator-5562 emu avd name exited with non-zero code: 1
+    at ChildProcess.completionListener (C:\dev\PaceForge\node_modules\.pnpm\@expo+spawn-async@1.7.2\node_modules\@expo\spawn-async\src\spawnAsync.ts:67:13)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at ChildProcess.cp.emit (C:\dev\PaceForge\node_modules\.pnpm\cross-spawn@7.0.6\node_modules\cross-spawn\lib\enoent.js:34:29)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:456:11)
+    at Socket.emit (node:events:519:28)
+    at Pipe.<anonymous> (node:net:346:12)
+    ...
+    at spawnAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+spawn-async@1.7.2\node_modules\@expo\spawn-async\src\spawnAsync.ts:28:21)
+    at ADBServer.runAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\platforms\android\ADBServer.ts:85:59)
+    at getAdbNameForDeviceIdAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\platforms\android\adb.ts:329:19)
+    at C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\platforms\android\adb.ts:312:14
+    at async Promise.all (index 0)
+    at startAdbReverseAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\platforms\android\adbReverse.ts:25:19)
+    at AsyncNgrok.startAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\server\AsyncNgrok.ts:83:13)
+    at MetroBundlerDevServer._startTunnelAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\server\BundlerDevServer.ts:256:5)
+    at MetroBundlerDevServer.postStartAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\server\BundlerDevServer.ts:229:7)
+    at MetroBundlerDevServer.startAsync (C:\dev\PaceForge\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0.13_@babel+core@7.28.4_graphql@15.8.0_react-native@0.74.5_@babel+c_4t6kvj3zy5sdv4umzvcw4nrpve\node_modules\@expo\cli\src\start\server\BundlerDevServer.ts:164:5)
+PS C:\dev\PaceForge> 

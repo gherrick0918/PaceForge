@@ -1,0 +1,187 @@
+PS C:\dev\PaceForge> pnpm -C apps/mobile add -E react@18.2.0 react-native@0.74.5 expo-status-bar@~1.12.1 react-native-svg@15.2.0; `
+>> pnpm -C apps/mobile add -D typescript@~5.3.3 @types/react@~18.2.79; `
+>> pnpm install; `
+>> pnpm -F @paceforge/generator build; `
+>> pushd apps\mobile; pnpm dlx expo start --tunnel; popd
+Downloading react-native@0.74.5: 24.04 MB/24.04 MB, done
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |  +24  -24 ++--
+../..                                    | Progress: resolved 1069, reused 981, downloaded 13, added 24, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
+- expo-status-bar 2.0.1
++ expo-status-bar 1.12.1 (3.0.8 is available)
+- react 18.3.1
++ react 18.2.0 (19.2.0 is available)
+- react-native 0.74.3
++ react-native 0.74.5 (0.82.0 is available)
+- react-native-svg 15.3.0
++ react-native-svg 15.2.0 (15.14.0 is available)
+
+devDependencies:
++ @types/react 19.1.17 already in devDependencies, was not moved to dependencies.
++ typescript 5.9.3 already in devDependencies, was not moved to dependencies.
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ react-native 0.74.5
+  ├── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+  └─┬ @react-native/virtualized-lists 0.74.87
+    └── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 9s
+Downloading typescript@5.3.3: 5.76 MB/5.76 MB, done
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |  +16  -14 ++-
+../..                                    | Progress: resolved 1071, reused 994, downloaded 2, added 15, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ expo-status-bar 1.12.1
++ react 18.2.0
+
+devDependencies:
+- @types/react 19.1.17
++ @types/react 18.2.79 (19.2.2 is available)
+- typescript 5.9.3
++ typescript 5.3.3 (5.9.3 is available)
+
+ WARN  Issues with peer dependencies found
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 6.7s
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+Done in 1.4s
+
+> @paceforge/generator@0.1.0 build C:\dev\PaceForge\packages\generator
+> tsc -p tsconfig.build.json
+
+Starting project at C:\dev\PaceForge\apps\mobile
+Starting Metro Bundler
+√ The package @expo/ngrok@^4.1.0 is required to use tunnels, would you like to install it globally? ... yes
+Installing @expo/ngrok@^4.1.0...
+> npm install --global @expo/ngrok@^4.1.0
+Installed @expo/ngrok@^4.1.0
+Tunnel connected.
+Tunnel ready.
+The following packages should be updated for best compatibility with the installed expo version:
+  expo-haptics@13.0.0 - expected version: ~13.0.1
+Your project may not work correctly until you install the expected versions of the packages.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █ ██▀▀ ▄▄▄▀▀▀██ ▄▄▄▄▄ █
+█ █   █ █  ▀█ ▀ ▀▄▄▄█ █ █   █ █
+█ █▄▄▄█ █▀  █▄▄ ▄ ▄▄▀██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄█ ▀▄█ ▀ ▀ ▀ █▄▄▄▄▄▄▄█
+█ ▄██▄▄▄▀██▄█▄▀█ ▀ ▄█▄█▀ ▀ ▄  █
+█▄ ▀ ▀▀▄▄█ ▄█▀█▄ ▄ ██ ▄▀ ▀█▄  █
+█▀██▀▀▀▄ ██▀▄▀▄ ▀▀▄▄█▄█▀▄▀▄█▀▀█
+█ █▄█▄▀▄▄▀█▀ ▄ ▄▄▄ ██▄█▀▄█▄▄▀ █
+█▀█▀▄▄▀▄  █▀█▄ ▀ █ ▄██▄▀ ▀▄█▀ █
+███▀▄██▄█▀▄▀█▀█▀   █▀▀▄ ▀█ ▄█ █
+█▄▄▄▄██▄█ █ ▄▀▄▄▀ ▄▄▀ ▄▄▄ ▀█▄▀█
+█ ▄▄▄▄▄ █▀▄▄ ▄ ▄   ▀  █▄█  ██▄█
+█ █   █ █▄▀ █▄ ▀    ▄▄ ▄ ▄ ▀▄▀█
+█ █▄▄▄█ █▀▀██▀█▀ █▀▄▄ ▄█ █ █  █
+█▄▄▄▄▄▄▄█▄▄█▄█▄▄██▄██▄█▄██▄█▄██
+
+› Metro waiting on exp://yah1t8i-anonymous-8081.exp.direct
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:8081
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+Logs for your project will appear below. Press Ctrl+C to exit.
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› shift+a │ select an Android device or emulator
+› Press w │ open web
+
+› Press r │ reload app
+› Press j │ open debugger
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+› Press c │ show project QR
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █ ██▀▀ ▄▄▄▀▀▀██ ▄▄▄▄▄ █
+█ █   █ █  ▀█ ▀ ▀▄▄▄█ █ █   █ █
+█ █▄▄▄█ █▀  █▄▄ ▄ ▄▄▀██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄█ ▀▄█ ▀ ▀ ▀ █▄▄▄▄▄▄▄█
+█ ▄██▄▄▄▀██▄█▄▀█ ▀ ▄█▄█▀ ▀ ▄  █
+█▄ ▀ ▀▀▄▄█ ▄█▀█▄ ▄ ██ ▄▀ ▀█▄  █
+█▀██▀▀▀▄ ██▀▄▀▄ ▀▀▄▄█▄█▀▄▀▄█▀▀█
+█ █▄█▄▀▄▄▀█▀ ▄ ▄▄▄ ██▄█▀▄█▄▄▀ █
+█▀█▀▄▄▀▄  █▀█▄ ▀ █ ▄██▄▀ ▀▄█▀ █
+███▀▄██▄█▀▄▀█▀█▀   █▀▀▄ ▀█ ▄█ █
+█▄▄▄▄██▄█ █ ▄▀▄▄▀ ▄▄▀ ▄▄▄ ▀█▄▀█
+█ ▄▄▄▄▄ █▀▄▄ ▄ ▄   ▀  █▄█  ██▄█
+█ █   █ █▄▀ █▄ ▀    ▄▄ ▄ ▄ ▀▄▀█
+█ █▄▄▄█ █▀▀██▀█▀ █▀▄▄ ▄█ █ █  █
+█▄▄▄▄▄▄▄█▄▄█▄█▄▄██▄██▄█▄██▄█▄██
+
+› Metro waiting on exp://yah1t8i-anonymous-8081.exp.direct
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:8081
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› shift+a │ select an Android device or emulator
+› Press w │ open web
+
+› Press r │ reload app
+› Press j │ open debugger
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+› Press c │ show project QR
+
+? Dev tools (native only) » - Use arrow-keys. Return to submit.
+>   Inspect elements
+    Toggle performance monitor
+    Toggle developer menu
+    Reload app

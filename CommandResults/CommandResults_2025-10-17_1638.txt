@@ -1,0 +1,177 @@
+PS C:\dev\PaceForge> pnpm -C apps/mobile add -E expo@~54.0.0; `
+>> pnpm -C apps/mobile dlx expo install react react-native expo-status-bar expo-keep-awake expo-speech expo-haptics @react-native-async-storage/async-storage react-native-svg; `
+>> pnpm install; `
+>> pnpm -F @paceforge/generator build; `
+>> pushd apps\mobile; pnpm dlx expo start --tunnel; popd
+ WARN  14 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, glob@7.2.3, inflight@1.0.6, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    |  +78 -247 ++++++++-------------------------
+../..                                    | Progress: resolved 912, reused 752, downloaded 75, added 78, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1
+- expo 51.0.39
++ expo 54.0.13
++ expo-status-bar 1.12.1
++ react 18.2.0
++ react-native 0.74.5
++ react-native-svg 15.2.0
+
+devDependencies:
++ @types/react 18.2.79 already in devDependencies, was not moved to dependencies.
++ typescript 5.3.3 already in devDependencies, was not moved to dependencies.
+
+ WARN  Issues with peer dependencies found
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 8.5s
+› Installing 8 SDK 54.0.0 compatible native modules using pnpm
+> pnpm add react@19.1.0 react-native@0.81.4 expo-status-bar@~3.0.8 expo-keep-awake@~15.0.7 expo-speech@~14.0.7 expo-haptics@~15.0.7 @react-native-async-storage/async-storage@2.2.0 react-native-svg@15.12.1
+ ERR_PNPM_ADDING_TO_ROOT  Running this command will add the dependency to the workspace root, which might not be what you want - if you really meant it, make it explicit by running this command again with the -w flag (or --workspace-root). If you don't want to see this warning anymore, you may set the ignore-workspace-root-check setting to true.
+Error: pnpm add react@19.1.0 react-native@0.81.4 expo-status-bar@~3.0.8 expo-keep-awake@~15.0.7 expo-speech@~14.0.7 expo-haptics@~15.0.7 @react-native-async-storage/async-storage@2.2.0 react-native-svg@15.12.1 exited with non-zero code: 1
+Error: pnpm add react@19.1.0 react-native@0.81.4 expo-status-bar@~3.0.8 expo-keep-awake@~15.0.7 expo-speech@~14.0.7 expo-haptics@~15.0.7 @react-native-async-storage/async-storage@2.2.0 react-native-svg@15.12.1 exited with non-zero code: 1
+    at ChildProcess.completionListener (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+spawn-async@1.7.2\node_modules\@expo\spawn-async\build\spawnAsync.js:42:23)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at cp.emit (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\cross-spawn@7.0.6\node_modules\cross-spawn\lib\enoent.js:34:29)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    ...
+    at spawnAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+spawn-async@1.7.2\node_modules\@expo\spawn-async\build\spawnAsync.js:7:23)
+    at PnpmPackageManager.runAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+package-manager@1.9.8\node_modules\@expo\package-manager\build\node\BasePackageManager.js:41:42)
+    at PnpmPackageManager.addAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+package-manager@1.9.8\node_modules\@expo\package-manager\build\node\PnpmPackageManager.js:36:21)
+    at installPackagesAsync (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\build\src\install\installAsync.js:189:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+Done in 1.5s
+
+> @paceforge/generator@0.1.0 build C:\dev\PaceForge\packages\generator
+> tsc -p tsconfig.build.json
+
+Starting project at C:\dev\PaceForge\apps\mobile
+Starting Metro Bundler
+Tunnel connected.
+Tunnel ready.
+The following packages should be updated for best compatibility with the installed expo version:
+  @react-native-async-storage/async-storage@1.23.1 - expected version: 2.2.0
+  expo-haptics@13.0.0 - expected version: ~15.0.7
+  expo-keep-awake@13.0.2 - expected version: ~15.0.7
+  expo-speech@12.0.2 - expected version: ~14.0.7
+  expo-status-bar@1.12.1 - expected version: ~3.0.8
+  react@18.2.0 - expected version: 19.1.0
+  react-native@0.74.5 - expected version: 0.81.4
+  react-native-svg@15.2.0 - expected version: 15.12.1
+  @types/react@18.2.79 - expected version: ~19.1.10
+  typescript@5.3.3 - expected version: ~5.9.2
+Your project may not work correctly until you install the expected versions of the packages.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █ ██▀▀ ▄▄▄▀▀▀██ ▄▄▄▄▄ █
+█ █   █ █  ▀█ ▀ ▀▄▄▄█ █ █   █ █
+█ █▄▄▄█ █▀  █▄▄ ▄ ▄▄▀██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄█ ▀▄█ ▀ ▀ ▀ █▄▄▄▄▄▄▄█
+█ ▄██▄▄▄▀██▄█▄▀█ ▀ ▄█▄█▀ ▀ ▄  █
+█▄ ▀ ▀▀▄▄█ ▄█▀█▄ ▄ ██ ▄▀ ▀█▄  █
+█▀██▀▀▀▄ ██▀▄▀▄ ▀▀▄▄█▄█▀▄▀▄█▀▀█
+█ █▄█▄▀▄▄▀█▀ ▄ ▄▄▄ ██▄█▀▄█▄▄▀ █
+█▀█▀▄▄▀▄  █▀█▄ ▀ █ ▄██▄▀ ▀▄█▀ █
+███▀▄██▄█▀▄▀█▀█▀   █▀▀▄ ▀█ ▄█ █
+█▄▄▄▄██▄█ █ ▄▀▄▄▀ ▄▄▀ ▄▄▄ ▀█▄▀█
+█ ▄▄▄▄▄ █▀▄▄ ▄ ▄   ▀  █▄█  ██▄█
+█ █   █ █▄▀ █▄ ▀    ▄▄ ▄ ▄ ▀▄▀█
+█ █▄▄▄█ █▀▀██▀█▀ █▀▄▄ ▄█ █ █  █
+█▄▄▄▄▄▄▄█▄▄█▄█▄▄██▄██▄█▄██▄█▄██
+
+› Metro waiting on exp://yah1t8i-anonymous-8081.exp.direct
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:8081
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+Logs for your project will appear below. Press Ctrl+C to exit.
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› shift+a │ select an Android device or emulator
+› Press w │ open web
+
+› Press r │ reload app
+› Press j │ open debugger
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+› Press c │ show project QR
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █ ██▀▀ ▄▄▄▀▀▀██ ▄▄▄▄▄ █
+█ █   █ █  ▀█ ▀ ▀▄▄▄█ █ █   █ █
+█ █▄▄▄█ █▀  █▄▄ ▄ ▄▄▀██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄█ ▀▄█ ▀ ▀ ▀ █▄▄▄▄▄▄▄█
+█ ▄██▄▄▄▀██▄█▄▀█ ▀ ▄█▄█▀ ▀ ▄  █
+█▄ ▀ ▀▀▄▄█ ▄█▀█▄ ▄ ██ ▄▀ ▀█▄  █
+█▀██▀▀▀▄ ██▀▄▀▄ ▀▀▄▄█▄█▀▄▀▄█▀▀█
+█ █▄█▄▀▄▄▀█▀ ▄ ▄▄▄ ██▄█▀▄█▄▄▀ █
+█▀█▀▄▄▀▄  █▀█▄ ▀ █ ▄██▄▀ ▀▄█▀ █
+███▀▄██▄█▀▄▀█▀█▀   █▀▀▄ ▀█ ▄█ █
+█▄▄▄▄██▄█ █ ▄▀▄▄▀ ▄▄▀ ▄▄▄ ▀█▄▀█
+█ ▄▄▄▄▄ █▀▄▄ ▄ ▄   ▀  █▄█  ██▄█
+█ █   █ █▄▀ █▄ ▀    ▄▄ ▄ ▄ ▀▄▀█
+█ █▄▄▄█ █▀▀██▀█▀ █▀▄▄ ▄█ █ █  █
+█▄▄▄▄▄▄▄█▄▄█▄█▄▄██▄██▄█▄██▄█▄██
+
+› Metro waiting on exp://yah1t8i-anonymous-8081.exp.direct
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:8081
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+Android Bundling failed 9871ms apps\mobile\App.tsx (695 modules)
+ ERROR  Error: Failed to get the SHA-1 for: C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\build\metro-require\require.js.
+      Potential causes:
+        1) The file is not watched. Ensure it is under the configured `projectRoot` or `watchFolders`.
+        2) Check `blockList` in your metro.config.js and make sure it isn't excluding the file path.
+        3) The file may have been deleted since it was resolved - try refreshing your app.
+        4) Otherwise, this is a bug in Metro or the configured resolver - please report it.
+    at DependencyGraph.getOrComputeSha1 (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\metro@0.83.1\node_modules\metro\src\node-haste\DependencyGraph.js:182:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Transformer.transformFile (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\metro@0.83.1\node_modules\metro\src\DeltaBundler\Transformer.js:96:22)
+Android Bundling failed 409ms apps\mobile\App.tsx (596 modules)
+ ERROR  Error: Failed to get the SHA-1 for: C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\@expo+cli@54.0.11_expo@54.0_516efd8be7d6e179db690c9a0a1d394c\node_modules\@expo\cli\build\metro-require\require.js.
+      Potential causes:
+        1) The file is not watched. Ensure it is under the configured `projectRoot` or `watchFolders`.
+        2) Check `blockList` in your metro.config.js and make sure it isn't excluding the file path.
+        3) The file may have been deleted since it was resolved - try refreshing your app.
+        4) Otherwise, this is a bug in Metro or the configured resolver - please report it.
+    at DependencyGraph.getOrComputeSha1 (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\metro@0.83.1\node_modules\metro\src\node-haste\DependencyGraph.js:182:13)
+    at Transformer.transformFile (C:\Users\gherr\AppData\Local\pnpm-cache\dlx\19e02e2b4d5b95362abd5dcb4b78d0553f83f7e14df7f97a9dcbf942f71aaa8a\199f3cec027-55dc\node_modules\.pnpm\metro@0.83.1\node_modules\metro\src\DeltaBundler\Transformer.js:96:22)

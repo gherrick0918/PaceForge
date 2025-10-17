@@ -1,0 +1,298 @@
+PS C:\dev\PaceForge> pnpm -C apps/mobile add -E expo@~51.0.0; `
+>> pnpm -C apps/mobile add -E expo-keep-awake@13.0.2 expo-speech@12.0.2 expo-haptics@13.0.0 @react-native-async-storage/async-storage@1.23.1 react-na
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                    ative-svg@15.3.0; `
+>> pnpm -C apps/mobile add -D typescript@~5.9.2 @types/react@~19.1.10; `
+>> pnpm install; `
+>> pnpm -F @paceforge/generator build; `
+>> pushd apps\mobile; pnpm dlx expo start; popd
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    | Progress: resolved 1069, reused 994, downloaded 0, added 0, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1
++ expo 51.0.39
++ expo-haptics 13.0.0
++ expo-keep-awake 13.0.2
++ expo-speech 12.0.2
++ expo-status-bar 2.0.1
++ react 18.3.1
++ react-native 0.74.3
++ react-native-svg 15.3.0
+
+devDependencies:
++ @types/react 19.1.17 already in devDependencies, was not moved to dependencies.
++ typescript 5.9.3 already in devDependencies, was not moved to dependencies.
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ react-native 0.74.3
+  ├── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+  ├── ✕ unmet peer react@18.2.0: found 18.3.1
+  └─┬ @react-native/virtualized-lists 0.74.85
+    └── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 3.1s
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    | Progress: resolved 1069, reused 994, downloaded 0, added 0, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1
++ expo 51.0.39
++ expo-haptics 13.0.0
++ expo-keep-awake 13.0.2
++ expo-speech 12.0.2
++ expo-status-bar 2.0.1
++ react 18.3.1
++ react-native 0.74.3
++ react-native-svg 15.3.0
+
+devDependencies:
++ @types/react 19.1.17 already in devDependencies, was not moved to dependencies.
++ typescript 5.9.3 already in devDependencies, was not moved to dependencies.
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ react-native 0.74.3
+  ├── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+  ├── ✕ unmet peer react@18.2.0: found 18.3.1
+  └─┬ @react-native/virtualized-lists 0.74.85
+    └── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 3.3s
+ WARN  17 deprecated subdependencies found: @babel/plugin-proposal-async-generator-functions@7.20.7, @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-logical-assignment-operators@7.20.7, @babel/plugin-proposal-nullish-coalescing-operator@7.18.6, @babel/plugin-proposal-numeric-separator@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @babel/plugin-proposal-optional-catch-binding@7.18.6, @babel/plugin-proposal-optional-chaining@7.21.0, @xmldom/xmldom@0.7.13, glob@7.1.6, glob@7.2.3, inflight@1.0.6, osenv@0.1.5, querystring@0.2.1, rimraf@2.6.3, rimraf@3.0.2, sudo-prompt@9.2.1
+../..                                    | Progress: resolved 1069, reused 994, downloaded 0, added 0, done
+
+dependencies:
++ @paceforge/generator 0.1.0 <- ..\..\packages\generator
++ @react-native-async-storage/async-storage 1.23.1
++ expo 51.0.39
++ expo-haptics 13.0.0
++ expo-keep-awake 13.0.2
++ expo-speech 12.0.2
++ expo-status-bar 2.0.1
++ react 18.3.1
++ react-native 0.74.3
++ react-native-svg 15.3.0
+
+devDependencies:
++ @types/react 19.1.17
++ typescript 5.9.3
+
+ WARN  Issues with peer dependencies found
+apps/mobile
+└─┬ react-native 0.74.3
+  ├── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+  ├── ✕ unmet peer react@18.2.0: found 18.3.1
+  └─┬ @react-native/virtualized-lists 0.74.85
+    └── ✕ unmet peer @types/react@^18.2.6: found 19.1.17
+
+packages/generator
+└─┬ vitest 2.1.9
+  └─┬ vite 5.4.20
+    └── ✕ unmet peer lightningcss@^1.21.0: found 1.19.0
+
+Done in 3.1s
+Scope: all 3 workspace projects
+Lockfile is up to date, resolution step is skipped
+Already up to date
+Done in 1.5s
+
+> @paceforge/generator@0.1.0 build C:\dev\PaceForge\packages\generator
+> tsc -p tsconfig.build.json
+
+Starting project at C:\dev\PaceForge\apps\mobile
+Starting Metro Bundler
+The following packages should be updated for best compatibility with the installed expo version:
+  expo-haptics@13.0.0 - expected version: ~13.0.1
+  expo-status-bar@2.0.1 - expected version: ~1.12.1
+  react@18.3.1 - expected version: 18.2.0
+  react-native@0.74.3 - expected version: 0.74.5
+  react-native-svg@15.3.0 - expected version: 15.2.0
+  @types/react@19.1.17 - expected version: ~18.2.79
+  typescript@5.9.3 - expected version: ~5.3.3
+Your project may not work correctly until you install the expected versions of the packages.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▄▄▄ ▀▄▀█ █ ▄▄▄▄▄ █
+█ █   █ ██▄▀ █ ▀▄▄█ █   █ █
+█ █▄▄▄█ ██▀▄ ▄█▀█▀█ █▄▄▄█ █
+█▄▄▄▄▄▄▄█ ▀▄█ ▀ ▀ █▄▄▄▄▄▄▄█
+█▄ █▄ ▀▄▀█▄▀█▄▀█▀ █▄█▀█▀▀▄█
+█▀▀▄▄▀ ▄ ▀▄██▄▄▄▄▀▀███▄▀▀ █
+█▀█  ▄ ▄▀█  █▀█▄ █ ▄▀▀█▀ ██
+█ ▄▀▄ ▄▄█▄ ██▀▄▀ ▄▀ ██▄▀  █
+█▄█▄█▄▄▄▄▀█▀ ▄▄ █ ▄▄▄  ▄▀▄█
+█ ▄▄▄▄▄ ██▄▀▀▄  █ █▄█ ███ █
+█ █   █ █  ▀▄ ▀█▄ ▄  ▄ █▀▀█
+█ █▄▄▄█ █▀ █ ▀█▄ ▄█▀▀▄█   █
+█▄▄▄▄▄▄▄█▄█▄▄██▄▄▄▄█▄▄███▄█
+
+› Metro waiting on exp://192.168.0.124:8081
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:8081
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+Logs for your project will appear below. Press Ctrl+C to exit.
+› Opening on Android...
+CommandError: No Android connected device found, and no emulators could be started automatically.
+Connect a device or create an emulator (https://docs.expo.dev/workflow/android-studio-emulator).
+Then follow the instructions here to enable USB debugging:
+https://developer.android.com/studio/run/device.html#developer-device-options. If you are using Genymotion go to Settings -> ADB, select "Use custom Android SDK tools", and point it at your Android SDK directory.
+It looks like you're trying to use web support but don't have the required dependencies installed.
+
+Install react-dom@18.2.0, react-native-web@~0.19.10 by running:
+
+npx expo install react-dom react-native-web
+
+If you're not using web, please ensure you remove the "web" string from the platforms array in the project Expo config.
+› Switching to --dev-client
+
+Development build: Unable to determine the default URI scheme for deep linking into the app. Ensure that the expo-dev-client package is installed.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▄▀▀▄▄▀▀█▄█ ▄▄▄▄▄ █
+█ █   █ ███▄█  ▀▀▄█ █   █ █
+█ █▄▄▄█ ██▄▀▄▀███▀█ █▄▄▄█ █
+█▄▄▄▄▄▄▄█ █ ▀▄▀ █ █▄▄▄▄▄▄▄█
+█ ▄▀▄▄▀▄█▀ ▄▄▀▀█ ██▄▀▀▀▀▀▄█
+█▀▀▀▀▀█▄▄▀▀  ▀█▄  ▄▄ ▀ ▀▀ █
+█▀ ▄█▀ ▄▀▄▄█▄▄▀▄ ▀█▄▄▀██▀▄█
+█ ▄▄   ▄▀▀██ ▄▄█ █▀  █▄ ▄ █
+█▄████▄▄█ █ ▀▀▀▄█ ▄▄▄ █▄ ██
+█ ▄▄▄▄▄ ██ █▄▀█▀▀ █▄█ ▄█▀ █
+█ █   █ █ █▄█▄▄ ▄   ▄▄ █  █
+█ █▄▄▄█ █▀▀▀█▄█ ▄▄▄█  █   █
+█▄▄▄▄▄▄▄█▄▄███▄▄█▄▄▄██▄██▄█
+
+› Metro waiting on http://localhost:8081
+› Scan the QR code above to open the project in a development build. Learn more: https://expo.fyi/start
+
+› Web is waiting on http://localhost:8081
+
+› Using development build
+› Press s │ switch to Expo Go
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+› Switching to --go
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▄▄▄ ▀▄▀█ █ ▄▄▄▄▄ █
+█ █   █ ██▄▀ █ ▀▄▄█ █   █ █
+█ █▄▄▄█ ██▀▄ ▄█▀█▀█ █▄▄▄█ █
+█▄▄▄▄▄▄▄█ ▀▄█ ▀ ▀ █▄▄▄▄▄▄▄█
+█▄ █▄ ▀▄▀█▄▀█▄▀█▀ █▄█▀█▀▀▄█
+█▀▀▄▄▀ ▄ ▀▄██▄▄▄▄▀▀███▄▀▀ █
+█▀█  ▄ ▄▀█  █▀█▄ █ ▄▀▀█▀ ██
+█ ▄▀▄ ▄▄█▄ ██▀▄▀ ▄▀ ██▄▀  █
+█▄█▄█▄▄▄▄▀█▀ ▄▄ █ ▄▄▄  ▄▀▄█
+█ ▄▄▄▄▄ ██▄▀▀▄  █ █▄█ ███ █
+█ █   █ █  ▀▄ ▀█▄ ▄  ▄ █▀▀█
+█ █▄▄▄█ █▀ █ ▀█▄ ▄█▀▀▄█   █
+█▄▄▄▄▄▄▄█▄█▄▄██▄▄▄▄█▄▄███▄█
+
+› Metro waiting on exp://192.168.0.124:8081
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Web is waiting on http://localhost:8081
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› shift+a │ select an Android device or emulator
+› Press w │ open web
+
+› Press r │ reload app
+› Press j │ open debugger
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+› Press c │ show project QR
+› Opening on Android...
+Error: could not connect to TCP port 5562: cannot connect to 127.0.0.1:5562: No connection could be made because the target machine actively refused it. (10061)
+√ Dev tools (native only) » Reload app
+No apps connected. Sending "sendDevCommand" to all React Native apps failed. Make sure your app is running in the simulator or on a phone connected via USB.
+› Press ? │ show all commands
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› shift+a │ select an Android device or emulator
+› Press w │ open web
+
+› Press r │ reload app
+› Press j │ open debugger
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+› Press c │ show project QR
+
+› Toggling dev menu
+No apps connected. Sending "devMenu" to all React Native apps failed. Make sure your app is running in the simulator or on a phone connected via USB.
