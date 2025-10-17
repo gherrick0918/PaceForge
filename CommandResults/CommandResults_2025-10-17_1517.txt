@@ -1,0 +1,197 @@
+PS C:\dev\PaceForge> pnpm add -D types
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     pnpm add -D typescript tsx vitest @types/node commander zod; `
+>> npx tsc --init --esModuleInterop --resolveJsonModule --target ES2021 --module ES2020 --outDir dist; `
+>> mkdir bin; mkdir src\schema; mkdir profiles; mkdir test; `
+>> pnpm run build; `
+>> pnpm test; `
+>> node dist\bin\paceforge.js generate intervals   --units mph --speeds 1,1.5,2,2.5,3 --repeats 6 --hardSecs 90 --easySecs 90 --hard 0.85 --easy 0.55
+ --warmup 5 --cooldown 5 --out text; `
+>> node dist\bin\paceforge.js generate steady      --units mph --speeds 1,1.5,2,2.5,3 --totalMins 30 --intensity 0.7 --out text; `
+>> node dist\bin\paceforge.js generate progression --units mph --speeds 1,1.5,2,2.5,3 --totalMins 30 --steps 5 --top 0.85 --out json
+ WARN  Moving tsx that was installed by a different package manager to "node_modules/.ignored"
+ WARN  Moving typescript that was installed by a different package manager to "node_modules/.ignored"
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 10.17.1 → 10.18.3.   │
+   │   Changelog: https://pnpm.io/v/10.18.3   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Packages: +54
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 122, reused 28, downloaded 26, added 54, done
+
+dependencies:
+- commander ^12.1.0
+- zod ^3.23.8
+
+devDependencies:
++ @types/node 22.18.11 (24.8.1 is available)
++ commander 12.1.0 (14.0.1 is available)
++ tsx 4.20.6
++ typescript 5.9.3
++ vitest 2.1.9 (3.2.4 is available)
++ zod 3.25.76 (4.1.12 is available)
+
+╭ Warning ───────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                            │
+│   Ignored build scripts: esbuild.                                                          │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.   │
+│                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Done in 2.9s using pnpm v10.17.1
+error TS5054: A 'tsconfig.json' file is already defined at: 'C:/dev/PaceForge/tsconfig.json'.
+mkdir : An item with the specified name C:\dev\PaceForge\bin already exists.
+At line:3 char:1
++ mkdir bin; mkdir src\schema; mkdir profiles; mkdir test; `
++ ~~~~~~~~~
+    + CategoryInfo          : ResourceExists: (C:\dev\PaceForge\bin:String) [New-Item], IOException
+    + FullyQualifiedErrorId : DirectoryExist,Microsoft.PowerShell.Commands.NewItemCommand
+
+mkdir : An item with the specified name C:\dev\PaceForge\src\schema already exists.
+At line:3 char:12
++ mkdir bin; mkdir src\schema; mkdir profiles; mkdir test; `
++            ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceExists: (C:\dev\PaceForge\src\schema:String) [New-Item], IOException
+    + FullyQualifiedErrorId : DirectoryExist,Microsoft.PowerShell.Commands.NewItemCommand
+ 
+mkdir : An item with the specified name C:\dev\PaceForge\profiles already exists.
+At line:3 char:30
++ mkdir bin; mkdir src\schema; mkdir profiles; mkdir test; `
++                              ~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceExists: (C:\dev\PaceForge\profiles:String) [New-Item], IOException
+    + FullyQualifiedErrorId : DirectoryExist,Microsoft.PowerShell.Commands.NewItemCommand
+
+mkdir : An item with the specified name C:\dev\PaceForge\test already exists.
+At line:3 char:46
++ mkdir bin; mkdir src\schema; mkdir profiles; mkdir test; `
++                                              ~~~~~~~~~~
+    + CategoryInfo          : ResourceExists: (C:\dev\PaceForge\test:String) [New-Item], IOException
+    + FullyQualifiedErrorId : DirectoryExist,Microsoft.PowerShell.Commands.NewItemCommand
+
+
+> paceforge@0.1.0 build C:\dev\PaceForge
+> tsc
+
+
+> paceforge@0.1.0 test C:\dev\PaceForge
+> vitest
+
+
+ DEV  v2.1.9 C:/dev/PaceForge
+
+ ✓ test/generator.quantize.test.ts (3)
+ ✓ test/intervals.test.ts (3)
+ ✓ test/progression.test.ts (1)
+ ✓ test/steady.test.ts (2)
+
+ Test Files  4 passed (4)
+      Tests  9 passed (9)
+   Start at  15:13:40
+   Duration  1.31s (transform 3.16s, setup 0ms, collect 3.34s, tests 24ms, environment 1ms, prepare 683ms)
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+
+  Watch Usage
+  press a, return to rerun all tests
+  press r to rerun current pattern tests
+  press f to rerun only failed tests
+  press u to update snapshot
+  press p to filter by a filename
+  press t to filter by a test name regex pattern
+  press w to filter by a project name
+  press b to start the browser server if not started yet
+  press q to quit
+00:00–05:00  @ 1.5 mph  Warm-up @ 1.5 mph
+05:00–06:30  @ 2.5 mph  Hard 1/6 @ 2.5 mph
+06:30–08:00  @ 1.5 mph  Easy 1/6 @ 1.5 mph
+08:00–09:30  @ 2.5 mph  Hard 2/6 @ 2.5 mph
+09:30–11:00  @ 1.5 mph  Easy 2/6 @ 1.5 mph
+11:00–12:30  @ 2.5 mph  Hard 3/6 @ 2.5 mph
+12:30–14:00  @ 1.5 mph  Easy 3/6 @ 1.5 mph
+14:00–15:30  @ 2.5 mph  Hard 4/6 @ 2.5 mph
+15:30–17:00  @ 1.5 mph  Easy 4/6 @ 1.5 mph
+17:00–18:30  @ 2.5 mph  Hard 5/6 @ 2.5 mph
+18:30–20:00  @ 1.5 mph  Easy 5/6 @ 1.5 mph
+20:00–21:30  @ 2.5 mph  Hard 6/6 @ 2.5 mph
+21:30–23:00  @ 1.5 mph  Easy 6/6 @ 1.5 mph
+23:00–28:00  @ 1.5 mph  Cool-down @ 1.5 mph
+00:00–05:00  @ 1.5 mph  Warm-up @ 1.5 mph
+05:00–21:00  @ 2 mph  Cruise @ 2 mph
+21:00–21:20  @ 2.5 mph  Stride 1/4 @ 2.5 mph
+21:20–22:00  @ 2 mph  Easy between strides @ 2 mph
+22:00–22:20  @ 2.5 mph  Stride 2/4 @ 2.5 mph
+22:20–23:00  @ 2 mph  Easy between strides @ 2 mph
+23:00–23:20  @ 2.5 mph  Stride 3/4 @ 2.5 mph
+23:20–24:00  @ 2 mph  Easy between strides @ 2 mph
+24:00–24:20  @ 2.5 mph  Stride 4/4 @ 2.5 mph
+24:20–25:00  @ 2 mph  Easy between strides @ 2 mph
+25:00–30:00  @ 1.5 mph  Cool-down @ 1.5 mph
+{
+  "name": "Progression",
+  "units": "mph",
+  "totalSecs": 1800,
+  "segments": [
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Warm-up @ 1.5 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 1.5,
+      "cue": "Step 1/5 @ 1.5 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2,
+      "cue": "Step 2/5 @ 2 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2,
+      "cue": "Step 3/5 @ 2 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2.5,
+      "cue": "Step 4/5 @ 2.5 mph"
+    },
+    {
+      "secs": 240,
+      "speed": 2.5,
+      "cue": "Step 5/5 @ 2.5 mph"
+    },
+    {
+      "secs": 300,
+      "speed": 1.5,
+      "cue": "Cool-down @ 1.5 mph"
+    }
+  ]
+}
+PS C:\dev\PaceForge> 
