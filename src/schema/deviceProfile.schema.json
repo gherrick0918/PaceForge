@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": ["name", "units", "speeds"],
+  "properties": {
+    "name": {"type": "string"},
+    "units": {"enum": ["mph", "kph"]},
+    "speeds": {"type": "array", "items": {"type": "number"}, "minItems": 1},
+    "inclines": {"type": "array", "items": {"type": "number"}},
+    "minSegmentSec": {"type": "number", "minimum": 1},
+    "rampLimitPerChange": {"type": "number", "minimum": 0}
+  },
+  "additionalProperties": false
+}

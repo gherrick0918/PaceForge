@@ -1,13 +1,12 @@
-
 export type Units = 'mph' | 'kph';
 
 export type DeviceProfile = {
   name: string;
   units: Units;
-  speeds: number[];           // Allowed discrete speeds (sorted ascending)
-  inclines?: number[];        // Optional allowed inclines
-  minSegmentSec?: number;     // Smallest segment duration you want to allow
-  rampLimitPerChange?: number; // Optional max delta in speed between adjacent segments
+  speeds: number[];
+  inclines?: number[];
+  minSegmentSec?: number;
+  rampLimitPerChange?: number;
 };
 
 export type Segment = {
@@ -19,23 +18,10 @@ export type Segment = {
 
 export type Workout = {
   name: string;
+  units: Units;
   totalSecs: number;
   segments: Segment[];
 };
-
-function quantizeDown(allowed: number[], target: number): number {
-  // pick the largest allowed value <= target, otherwise the smallest allowed
-  let candidate = allowed[0];
-  for (const v of allowed) {
-    if (v <= target) candidate = v;
-    else break;
-  }
-  return candidate;
-}
-
-function clamp(n: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, n));
-}
 
 export type IntervalPlanOpts = {
   name?: string;
@@ -44,13 +30,133 @@ export type IntervalPlanOpts = {
   repeats?: number;
   hardSecs?: number;
   easySecs?: number;
-  hardIntensity?: number; // 0..1 as a % of max allowed speed
-  easyIntensity?: number; // 0..1
+  hardIntensity?: number;
+  easyIntensity?: number;
 };
 
-export function makeIntervals(profile: DeviceProfile, opts: IntervalPlanOpts): Workout {
+export type SteadyOpts = {
+  name?: string;
+  totalMins?: number;
+  intensity?: number;
+  addStrides?: boolean;
+};
+
+export type ProgressionOpts = {
+  name?: string;
+  totalMins?: number;
+  steps?: number;
+  topIntensity?: number;
+};
+
+export function quantizeDown(allowed: number[], target: number): number {
+  if (!allowed.length) {
+    throw new Error('Device profile speeds cannot be empty.');
+  }
+
+  let candidate = allowed[0];
+  for (const value of allowed) {
+    if (value <= target) {
+      candidate = value;
+    } else {
+      break;
+    }
+  }
+  return candidate;
+}
+
+function clamp(n: number, lo: number, hi: number) {
+  return Math.max(lo, Math.min(hi, n));
+}
+
+function sortSpeeds(speeds: number[]): number[] {
+  return [...speeds].sort((a, b) => a - b);
+}
+
+function mergeCue(previous?: string, next?: string) {
+  if (previous && next && previous !== next) {
+    return `${previous} | ${next}`;
+  }
+  return previous ?? next;
+}
+
+function applySafety(profile: DeviceProfile, rawSegments: Segment[]): Segment[] {
+  const allowed = sortSpeeds(profile.speeds);
+  const rampLimit = profile.rampLimitPerChange;
+  const minSegmentSec = profile.minSegmentSec;
+
+  const constrained: Segment[] = [];
+
+  for (const segment of rawSegments) {
+    const baseSpeed = quantizeDown(allowed, segment.speed);
+    let speed = baseSpeed;
+    let cue = segment.cue;
+
+    if (constrained.length && rampLimit !== undefined) {
+      const prevSpeed = constrained[constrained.length - 1].speed;
+      if (Math.abs(speed - prevSpeed) > rampLimit) {
+        const candidates = allowed.filter((value) => Math.abs(value - prevSpeed) <= rampLimit);
+        if (candidates.length) {
+          let best = candidates[0];
+          let bestDiff = Math.abs(best - baseSpeed);
+          for (const candidate of candidates) {
+            const diff = Math.abs(candidate - baseSpeed);
+            if (diff < bestDiff) {
+              best = candidate;
+              bestDiff = diff;
+            }
+          }
+          if (best !== speed) {
+            speed = best;
+            cue = cue ? `${cue} (clamped)` : '(clamped)';
+          }
+        } else if (prevSpeed !== speed) {
+          speed = prevSpeed;
+          cue = cue ? `${cue} (clamped)` : '(clamped)';
+        }
+      }
+    }
+
+    constrained.push({ ...segment, speed, cue });
+  }
+
+  if (minSegmentSec === undefined) {
+    return constrained.map((segment) => ({ ...segment }));
+  }
+
+  const merged: Segment[] = [];
+  for (const segment of constrained) {
+    if (
+      merged.length &&
+      merged[merged.length - 1].speed === segment.speed &&
+      (merged[merged.length - 1].secs < minSegmentSec || segment.secs < minSegmentSec)
+    ) {
+      merged[merged.length - 1] = {
+        ...merged[merged.length - 1],
+        secs: merged[merged.length - 1].secs + segment.secs,
+        cue: mergeCue(merged[merged.length - 1].cue, segment.cue),
+      };
+    } else {
+      merged.push({ ...segment });
+    }
+  }
+
+  return merged.map((segment) => ({ ...segment }));
+}
+
+function finalizeWorkout(profile: DeviceProfile, name: string | undefined, segments: Segment[]): Workout {
+  const resolvedName = name ?? profile.name;
+  const constrained = applySafety(profile, segments);
+  const totalSecs = constrained.reduce((sum, segment) => sum + segment.secs, 0);
+  return { name: resolvedName, units: profile.units, totalSecs, segments: constrained };
+}
+
+export function makeIntervals(profile: DeviceProfile, opts: IntervalPlanOpts = {}): Workout {
+  const speeds = sortSpeeds(profile.speeds);
+  const max = speeds[speeds.length - 1];
+  const min = speeds[0];
+
   const {
-    name = "Intervals",
+    name = 'Intervals',
     warmupMins = 5,
     cooldownMins = 5,
     repeats = 6,
@@ -60,131 +166,167 @@ export function makeIntervals(profile: DeviceProfile, opts: IntervalPlanOpts): W
     easyIntensity = 0.55,
   } = opts;
 
-  const speeds = [...profile.speeds].sort((a,b)=>a-b);
-  const max = speeds[speeds.length-1];
-  const min = speeds[0];
-
-  const warm = quantizeDown(speeds, clamp(min + (max-min)*0.35, min, max));
+  const warmTarget = clamp(min + (max - min) * 0.35, min, max);
+  const warm = quantizeDown(speeds, warmTarget);
   const hardTarget = clamp(max * hardIntensity, min, max);
   const easyTarget = clamp(max * easyIntensity, min, max);
   const hard = quantizeDown(speeds, hardTarget);
   const easy = quantizeDown(speeds, easyTarget);
 
-  const segs: Segment[] = [];
-  segs.push({ secs: Math.round(warmupMins*60), speed: warm, cue: `Warm-up @ ${warm} ${profile.units}` });
+  const segments: Segment[] = [];
 
-  for (let i=0;i<repeats;i++) {
-    segs.push({ secs: hardSecs, speed: hard, cue: `Hard ${i+1}/${repeats} @ ${hard} ${profile.units}` });
-    segs.push({ secs: easySecs, speed: easy, cue: `Easy ${i+1}/${repeats} @ ${easy} ${profile.units}` });
+  if (warmupMins > 0) {
+    segments.push({
+      secs: Math.round(warmupMins * 60),
+      speed: warm,
+      cue: `Warm-up @ ${warm} ${profile.units}`,
+    });
   }
 
-  segs.push({ secs: Math.round(cooldownMins*60), speed: warm, cue: `Cool-down @ ${warm} ${profile.units}` });
-
-  // Enforce minSegmentSec if provided (merge tiny tail segments)
-  const minSecs = profile.minSegmentSec ?? 30;
-  const merged: Segment[] = [];
-  for (const s of segs) {
-    if (merged.length && s.speed === merged[merged.length-1].speed && (merged[merged.length-1].secs < minSecs || s.secs < minSecs)) {
-      merged[merged.length-1].secs += s.secs;
-      merged[merged.length-1].cue = merged[merged.length-1].cue || s.cue;
-    } else {
-      merged.push({ ...s });
-    }
+  for (let i = 0; i < repeats; i++) {
+    segments.push({
+      secs: hardSecs,
+      speed: hard,
+      cue: `Hard ${i + 1}/${repeats} @ ${hard} ${profile.units}`,
+    });
+    segments.push({
+      secs: easySecs,
+      speed: easy,
+      cue: `Easy ${i + 1}/${repeats} @ ${easy} ${profile.units}`,
+    });
   }
 
-  const totalSecs = merged.reduce((a,b)=>a+b.secs,0);
-  return { name, totalSecs, segments: merged };
+  if (cooldownMins > 0) {
+    segments.push({
+      secs: Math.round(cooldownMins * 60),
+      speed: warm,
+      cue: `Cool-down @ ${warm} ${profile.units}`,
+    });
+  }
+
+  return finalizeWorkout(profile, name, segments);
 }
 
-export type SteadyOpts = {
-  name?: string;
-  totalMins?: number;
-  intensity?: number; // 0..1 of max
-  addStrides?: boolean;
-};
-
-export function makeSteady(profile: DeviceProfile, opts: SteadyOpts): Workout {
-  const { name="Steady", totalMins=30, intensity=0.65, addStrides=true } = opts;
-  const speeds = [...profile.speeds].sort((a,b)=>a-b);
-  const max = speeds[speeds.length-1];
+export function makeSteady(profile: DeviceProfile, opts: SteadyOpts = {}): Workout {
+  const speeds = sortSpeeds(profile.speeds);
+  const max = speeds[speeds.length - 1];
   const min = speeds[0];
 
-  const warm = quantizeDown(speeds, clamp(min + (max-min)*0.35, min, max));
-  const cruise = quantizeDown(speeds, clamp(max*intensity, min, max));
+  const { name = 'Steady', totalMins = 30, intensity = 0.65, addStrides = true } = opts;
 
-  const segs: Segment[] = [
-    { secs: 5*60, speed: warm, cue: `Warm-up @ ${warm} ${profile.units}` },
-    { secs: (totalMins-10)*60, speed: cruise, cue: `Cruise @ ${cruise} ${profile.units}` },
-    { secs: 5*60, speed: warm, cue: `Cool-down @ ${warm} ${profile.units}` },
+  const warmTarget = clamp(min + (max - min) * 0.35, min, max);
+  const warm = quantizeDown(speeds, warmTarget);
+  const cruiseTarget = clamp(max * intensity, min, max);
+  const cruise = quantizeDown(speeds, cruiseTarget);
+
+  const totalSecs = Math.max(0, Math.round(totalMins * 60));
+  const warmSecs = Math.min(totalSecs / 2, 5 * 60);
+  const coolSecs = warmSecs;
+  const cruiseSecs = Math.max(0, totalSecs - warmSecs - coolSecs);
+
+  const segments: Segment[] = [
+    { secs: Math.round(warmSecs), speed: warm, cue: `Warm-up @ ${warm} ${profile.units}` },
+    { secs: Math.round(cruiseSecs), speed: cruise, cue: `Cruise @ ${cruise} ${profile.units}` },
+    { secs: Math.round(coolSecs), speed: warm, cue: `Cool-down @ ${warm} ${profile.units}` },
   ];
 
-  if (addStrides && totalMins >= 25 && speeds.length >= 3) {
-    // Insert four 20s strides near the end of cruise to break monotony
-    const stride = quantizeDown(speeds, clamp(max*0.9, min, max));
-    const insertAt = 1; // cruise segment
-    const cruiseSeg = segs[insertAt];
-    const pre = Math.max(0, cruiseSeg.secs - (4*20 + 4*40)); // leave 40s easy between strides
-    const newSegs: Segment[] = [
-      segs[0],
-      { secs: pre, speed: cruiseSeg.speed, cue: `Cruise @ ${cruise} ${profile.units}` },
-    ];
-    for (let i=0;i<4;i++) {
-      newSegs.push({ secs: 20, speed: stride, cue: `Stride ${i+1}/4 @ ${stride} ${profile.units}` });
-      newSegs.push({ secs: 40, speed: cruiseSeg.speed, cue: `Easy between strides @ ${cruiseSeg.speed} ${profile.units}` });
+  if (addStrides && cruiseSecs >= 4 * (20 + 40) && speeds.length >= 3) {
+    const strideTarget = clamp(max * 0.9, min, max);
+    const stride = quantizeDown(speeds, strideTarget);
+    const cruiseSeg = segments[1];
+    const baseCue = cruiseSeg.cue;
+    const preCruise = Math.max(0, cruiseSeg.secs - (4 * 20 + 4 * 40));
+
+    const rebuilt: Segment[] = [segments[0]];
+    if (preCruise > 0) {
+      rebuilt.push({ secs: preCruise, speed: cruiseSeg.speed, cue: baseCue });
     }
-    newSegs.push(segs[2]);
-    return { name, totalSecs: newSegs.reduce((a,b)=>a+b.secs,0), segments: newSegs };
+    for (let i = 0; i < 4; i++) {
+      rebuilt.push({
+        secs: 20,
+        speed: stride,
+        cue: `Stride ${i + 1}/4 @ ${stride} ${profile.units}`,
+      });
+      rebuilt.push({
+        secs: 40,
+        speed: cruiseSeg.speed,
+        cue: `Easy between strides @ ${cruiseSeg.speed} ${profile.units}`,
+      });
+    }
+    rebuilt.push(segments[2]);
+    return finalizeWorkout(profile, name, rebuilt);
   }
 
-  return { name, totalSecs: segs.reduce((a,b)=>a+b.secs,0), segments: segs };
+  return finalizeWorkout(profile, name, segments);
 }
 
-export type ProgressionOpts = {
-  name?: string;
-  totalMins?: number;
-  steps?: number; // number of speed steps from warm to top
-  topIntensity?: number; // fraction of max speed to finish at
-};
-
-export function makeProgression(profile: DeviceProfile, opts: ProgressionOpts): Workout {
-  const { name="Progression", totalMins=30, steps=4, topIntensity=0.8 } = opts;
-  const speeds = [...profile.speeds].sort((a,b)=>a-b);
-  const max = speeds[speeds.length-1];
+export function makeProgression(profile: DeviceProfile, opts: ProgressionOpts = {}): Workout {
+  const speeds = sortSpeeds(profile.speeds);
+  const max = speeds[speeds.length - 1];
   const min = speeds[0];
-  const warm = quantizeDown(speeds, clamp(min + (max-min)*0.35, min, max));
-  const top = quantizeDown(speeds, clamp(max*topIntensity, min, max));
 
-  // Build an ascending ladder from warm to top across 'steps' equal segments, then cool down
+  const { name = 'Progression', totalMins = 30, steps = 4, topIntensity = 0.8 } = opts;
+
+  const warmTarget = clamp(min + (max - min) * 0.35, min, max);
+  const warm = quantizeDown(speeds, warmTarget);
+  const topTarget = clamp(max * topIntensity, warm, max);
+  const top = quantizeDown(speeds, topTarget);
+
+  const stepCount = Math.max(1, steps);
+  const usableSpeeds = speeds.filter((speed) => speed >= warm && speed <= top);
   const ladder: number[] = [];
-  const uniqueSpeeds = speeds.filter(s => s >= warm && s <= top);
-  // pick evenly spaced indices across uniqueSpeeds
-  for (let i=0;i<steps;i++) {
-    const idx = Math.round((i/(steps-1))*(uniqueSpeeds.length-1));
-    ladder.push(uniqueSpeeds[idx]);
+  for (let i = 0; i < stepCount; i++) {
+    if (usableSpeeds.length === 0) {
+      ladder.push(warm);
+      continue;
+    }
+    const idx =
+      stepCount === 1 ? usableSpeeds.length - 1 : Math.round((i / (stepCount - 1)) * (usableSpeeds.length - 1));
+    ladder.push(usableSpeeds[idx]);
   }
 
-  const workSecs = (totalMins-10)*60; // minus warm/cool
-  const each = Math.floor(workSecs / steps);
+  const totalSecs = Math.max(0, Math.round(totalMins * 60));
+  const warmSecs = Math.min(totalSecs / 2, 5 * 60);
+  const coolSecs = warmSecs;
+  const workSecs = Math.max(0, totalSecs - warmSecs - coolSecs);
+  const baseStepSecs = stepCount ? Math.floor(workSecs / stepCount) : 0;
+  let remainder = workSecs - baseStepSecs * stepCount;
 
-  const segs: Segment[] = [{ secs: 5*60, speed: warm, cue: `Warm-up @ ${warm} ${profile.units}` }];
-  ladder.forEach((sp, i) => {
-    segs.push({ secs: each, speed: sp, cue: `Step ${i+1}/${steps} @ ${sp} ${profile.units}` });
+  const segments: Segment[] = [
+    { secs: Math.round(warmSecs), speed: warm, cue: `Warm-up @ ${warm} ${profile.units}` },
+  ];
+
+  ladder.forEach((speed, index) => {
+    let secs = baseStepSecs;
+    if (remainder > 0) {
+      secs += 1;
+      remainder -= 1;
+    }
+    segments.push({
+      secs,
+      speed,
+      cue: `Step ${index + 1}/${stepCount} @ ${speed} ${profile.units}`,
+    });
   });
-  segs.push({ secs: 5*60, speed: warm, cue: `Cool-down @ ${warm} ${profile.units}` });
 
-  return { name, totalSecs: segs.reduce((a,b)=>a+b.secs,0), segments: segs };
+  segments.push({ secs: Math.round(coolSecs), speed: warm, cue: `Cool-down @ ${warm} ${profile.units}` });
+
+  return finalizeWorkout(profile, name, segments);
 }
 
-// Pretty print helper
-export function describe(workout: Workout) {
-  let t = 0;
-  const pad = (n:number)=>String(n).padStart(2,'0');
-  const lines = workout.segments.map(seg => {
-    const start = t;
-    t += seg.secs;
-    const sMin = Math.floor(start/60), sSec = start%60;
-    const eMin = Math.floor(t/60), eSec = t%60;
-    return `${pad(sMin)}:${pad(sSec)}–${pad(eMin)}:${pad(eSec)}  @ ${seg.speed} ${workout.name.includes('kph')?'kph':''}  ${seg.cue ?? ''}`.trim();
-  });
-  return lines.join('\n');
+export function describe(workout: Workout): string {
+  let elapsed = 0;
+  const pad = (value: number) => String(value).padStart(2, '0');
+  return workout.segments
+    .map((segment) => {
+      const start = elapsed;
+      elapsed += segment.secs;
+      const startMin = Math.floor(start / 60);
+      const startSec = start % 60;
+      const endMin = Math.floor(elapsed / 60);
+      const endSec = elapsed % 60;
+      const cue = segment.cue ? `  ${segment.cue}` : '';
+      return `${pad(startMin)}:${pad(startSec)}–${pad(endMin)}:${pad(endSec)}  @ ${segment.speed} ${workout.units}${cue}`;
+    })
+    .join('\n');
 }

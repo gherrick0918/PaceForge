@@ -1,30 +1,50 @@
+import profileData from '../profiles/greg-walkpad.json' assert { type: 'json' };
+import {
+  type DeviceProfile,
+  type Units,
+  describe,
+  makeIntervals,
+  makeProgression,
+  makeSteady,
+} from './index.js';
 
-import { DeviceProfile, makeIntervals, makeSteady, makeProgression, describe } from "./generator.js";
-
-// Example device profile (adjust speeds to match your walking pad options)
 const profile: DeviceProfile = {
-  name: "Greg's Walking Pad",
-  units: "mph",
-  speeds: [0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8],
-  minSegmentSec: 30
+  ...profileData,
+  units: profileData.units as Units,
+  speeds: [...profileData.speeds],
 };
 
-const mode = process.argv[2] ?? "intervals";
+const mode = process.argv[2] ?? 'intervals';
 
-let workout;
-if (mode === "steady") {
-  workout = makeSteady(profile, { name: "Steady", totalMins: 30, intensity: 0.7, addStrides: true });
-} else if (mode === "progression") {
-  workout = makeProgression(profile, { name: "Progression", totalMins: 30, steps: 5, topIntensity: 0.85 });
-} else {
-  workout = makeIntervals(profile, { name: "Intervals", warmupMins: 5, cooldownMins: 5, repeats: 6, hardSecs: 90, easySecs: 90, hardIntensity: 0.85, easyIntensity: 0.55 });
+function print(workoutName: string) {
+  console.log(`\n=== ${workoutName} ===`);
 }
 
-console.log(`Workout: ${workout.name}`);
-console.log(`Total: ${Math.round(workout.totalSecs/60)} min`);
-console.log("");
-console.log(describe(workout));
-
-// Also emit JSON for integrations if you want to import elsewhere
-console.log("\n--- JSON ---");
-console.log(JSON.stringify(workout, null, 2));
+switch (mode) {
+  case 'steady': {
+    const workout = makeSteady(profile, { name: 'Steady Demo', totalMins: 30, intensity: 0.7, addStrides: true });
+    print(workout.name);
+    console.log(describe(workout));
+    break;
+  }
+  case 'progression': {
+    const workout = makeProgression(profile, { name: 'Progression Demo', totalMins: 30, steps: 5, topIntensity: 0.85 });
+    print(workout.name);
+    console.log(describe(workout));
+    break;
+  }
+  default: {
+    const workout = makeIntervals(profile, {
+      name: 'Intervals Demo',
+      warmupMins: 5,
+      cooldownMins: 5,
+      repeats: 6,
+      hardSecs: 90,
+      easySecs: 90,
+      hardIntensity: 0.85,
+      easyIntensity: 0.55,
+    });
+    print(workout.name);
+    console.log(describe(workout));
+  }
+}
