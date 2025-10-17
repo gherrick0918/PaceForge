@@ -1,0 +1,16 @@
+{
+  "name": "walkpad-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/demo.ts",
+    "gen:intervals": "tsx src/demo.ts intervals",
+    "gen:steady": "tsx src/demo.ts steady",
+    "gen:progression": "tsx src/demo.ts progression"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.3"
+  }
+}
