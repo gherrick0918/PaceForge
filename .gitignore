@@ -16,3 +16,12 @@ coverage/
 !.data/characters/
 .data/characters/*
 !.data/characters/.gitkeep
+assets/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.mp3
+*.wav
+.expo/
