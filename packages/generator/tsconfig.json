@@ -4,14 +4,12 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "strict": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
+    "types": ["node"],
+    "rootDir": ".",
     "outDir": "dist"
   },
-  "include": [
-    "src",
-    "bin",
-    "types"
-  ]
+  "include": ["src", "bin", "test", "profiles"]
 }

@@ -1,23 +1,11 @@
 {
   "name": "paceforge",
-  "version": "0.1.0",
   "private": true,
-  "type": "module",
-  "bin": {
-    "paceforge": "dist/bin/paceforge.js"
-  },
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "start": "tsx src/demo.ts",
-    "build": "tsc",
-    "test": "vitest",
-    "dev": "tsx bin/paceforge.ts generate intervals --units mph --speeds 1,1.5,2,2.5,3"
-  },
-  "devDependencies": {
-    "@types/node": "^22.18.11",
-    "commander": "^12.1.0",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3",
-    "vitest": "^2.1.9",
-    "zod": "^3.25.76"
+    "build:generator": "pnpm -F @paceforge/generator build",
+    "start:mobile": "pnpm -F mobile start",
+    "test": "pnpm -r test"
   }
 }
